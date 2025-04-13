@@ -11,3 +11,16 @@ function checkAnswer() {
     }
   }
   
+ 
+  function toggleMenu() {
+    const navLinks = document.getElementById("nav-links");
+    navLinks.classList.toggle("show");
+  }
+
+  // Optional: close menu on link click (mobile)
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      document.getElementById("nav-links").classList.remove("show");
+    });
+  });
+
