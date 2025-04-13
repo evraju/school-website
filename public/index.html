@@ -14,12 +14,45 @@
       font-family: 'Tiro Devanagari Marathi', serif;
     }
 
+    .navbar {
+      background-color: #003366;
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      font-family: 'Tiro Devanagari Marathi', serif;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .navbar a:hover {
+      background-color: #0055aa;
+    }
+
+
     header {
       background: url('./school.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      height: 50vh;
+      height: 60vh;
 
       h1 {
         font-size: 3rem;
@@ -50,20 +83,29 @@
 </head>
 
 <body>
-
   <header class="animate fade">
     <img src="./public/logo.jpeg" alt="">
     <h1>🌼जिल्हा परिषद प्राथमिक शाळा गारखिंडी 🌼</h1>
     <h2>ता. पारनेर जि. अहिल्यानगर </h2>
     <p>ज्ञानाचा प्रकाश प्रत्येकासाठी !</p>
   </header>
+  <nav class="navbar">
+    <ul>
+      <li><a href="#about">आमच्याविषयी</a></li>
+      <li><a href="#info">उपक्रम</a></li>
+      <li><a href="#">शिक्षक माहिती</a></li>
+      <li><a href="#">शाळेचा पट</a></li>
+      <li><a href="#">गॅलरी</a></li>
+      <li><a href="#contact">संपर्क</a></li>
+    </ul>
+  </nav>
 
-  <section class="about animate slide">
+  <section class="about animate slide" id="about">
     <h2>🔍 आमच्याविषयी</h2>
-    <p>आमची शाळा ही प्रेम, ज्ञान आणि संस्कार यांचे घर आहे. येथे खेळत-खेळत शिक्षण दिले जाते.</p>
+    <p>आमची शाळा ही प्रेम, ज्ञान आणि संस्कार यांचे घर आहे. येथे हसत-खेळत शिक्षण दिले जाते.</p>
   </section>
 
-  <section class="school-info animate fade">
+  <section class="school-info animate fade" id="contact">
     <h2>🏫 शाळेबद्दल माहिती</h2>
     <p><strong>ईमेल:</strong> <a href="mailto:zpschoolgarkhindi@gmail.com">zpschoolgarkhindi@gmail.com</a></p>
     <p><strong>पत्ता:</strong> मु. गारखिंडी, पोस्ट - पाडळी आळे, तालुका - पारनेर,<br>
