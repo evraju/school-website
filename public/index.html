@@ -21,6 +21,8 @@
       z-index: 1000;
     }
 
+   
+
     .navbar .menu-toggle {
       display: none;
       font-size: 24px;
@@ -74,7 +76,7 @@
     }
 
     header {
-      background: url('./public/school.jpg');
+      background: url('./school.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -227,12 +229,12 @@
       const navLinks = document.getElementById('nav-links');
       navLinks.classList.toggle('active');
     }
-  
+
     // Auto-close on link click (mobile only)
     document.addEventListener('DOMContentLoaded', () => {
       const navLinks = document.getElementById('nav-links');
       const links = navLinks.querySelectorAll('a');
-  
+
       links.forEach(link => {
         link.addEventListener('click', () => {
           if (window.innerWidth <= 768) {
@@ -242,7 +244,7 @@
       });
     });
   </script>
-  
+
 
 </body>
 
