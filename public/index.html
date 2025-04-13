@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="./style.css">
   <link rel="shortcut icon" href="./public/logo.jpeg" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi&display=swap" rel="stylesheet">
-  <link rel="shortcut icon" href="./logo.jpeg" type="image/x-icon">
   <style>
     body {
       font-family: 'Tiro Devanagari Marathi', serif;
@@ -20,6 +19,15 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+    }
+
+    .navbar .menu-toggle {
+      display: none;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+      padding: 0 20px;
+      text-align: right;
     }
 
     .navbar ul {
@@ -46,40 +54,97 @@
       background-color: #0055aa;
     }
 
+    @media (max-width: 768px) {
+      .navbar ul {
+        display: none;
+        flex-direction: column;
+        background-color: #003366;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .navbar ul.active {
+        display: flex;
+      }
+
+      .navbar .menu-toggle {
+        display: block;
+      }
+    }
 
     header {
-      background: url('./school.jpg');
+      background: url('./public/school.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       height: 60vh;
+    }
 
-      h1 {
-        font-size: 3rem;
-        color: rgb(15, 39, 250);
-        /* Text fill color */
-        text-shadow:
-          -1px -1px 0 white,
-          1px -1px 0 white,
-          -1px 1px 0 white,
-          1px 1px 0 white;
-        font-size: 48px;
-        font-weight: bold;
+    header h1 {
+      font-size: 3rem;
+      color: rgb(15, 39, 250);
+      text-shadow:
+        -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white;
+      font-size: 48px;
+      font-weight: bold;
+    }
+
+    header h2 {
+      color: #CF0F47;
+      font-size: 2rem;
+      text-shadow:
+        -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      font-size: 30px;
+      cursor: pointer;
+      color: white;
+      padding: 10px 20px;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      transition: max-height 0.5s ease-in-out;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        overflow: hidden;
+        max-height: 0;
+        background-color: #003366;
+        width: 100%;
       }
 
-      h2 {
-        color: #CF0F47;
-        font-size: 2rem;
-        /* Text fill color */
-        text-shadow:
-          -1px -1px 0 white,
-          1px -1px 0 white,
-          -1px 1px 0 white,
-          1px 1px 0 white;
+      .nav-links.active {
+        max-height: 500px;
+        /* enough to fit all links */
+      }
+
+      .hamburger {
+        display: block;
       }
     }
   </style>
-
 </head>
 
 <body>
@@ -89,15 +154,20 @@
     <h2>ता. पारनेर जि. अहिल्यानगर </h2>
     <p>ज्ञानाचा प्रकाश प्रत्येकासाठी !</p>
   </header>
+
   <nav class="navbar">
-    <ul>
-      <li><a href="#about">आमच्याविषयी</a></li>
-      <li><a href="#info">उपक्रम</a></li>
-      <li><a href="#">शिक्षक माहिती</a></li>
-      <li><a href="#">शाळेचा पट</a></li>
-      <li><a href="#">गॅलरी</a></li>
-      <li><a href="#contact">संपर्क</a></li>
-    </ul>
+    <div class="nav-container">
+      <div class="logo">शाळा</div>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">आमच्याविषयी</a></li>
+        <li><a href="#info">उपक्रम</a></li>
+        <li><a href="#">शिक्षक माहिती</a></li>
+        <li><a href="#">शाळेचा पट</a></li>
+        <li><a href="#">गॅलरी</a></li>
+        <li><a href="#contact">संपर्क</a></li>
+      </ul>
+    </div>
   </nav>
 
   <section class="about animate slide" id="about">
@@ -127,7 +197,7 @@
     <p>आमच्याकडे प्रेमळ, अनुभवी आणि सहकार्यशील शिक्षकवृंद आहे.</p>
   </section>
 
-  <section class="contact animate slide">
+  <section id="contact" class="contact animate slide">
     <h2>📞 आमच्याशी संपर्क</h2>
     <p>फोन: 9922181375</p>
     <p>ईमेल: zpschoolgarkhindi@gmail.com</p>
@@ -152,6 +222,27 @@
   <footer class="animate slide">
     <p>© 2025 जिल्हा परिषद प्राथमिक शाळा गारखिंडी. सर्व हक्क राखीव.</p>
   </footer>
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById('nav-links');
+      navLinks.classList.toggle('active');
+    }
+  
+    // Auto-close on link click (mobile only)
+    document.addEventListener('DOMContentLoaded', () => {
+      const navLinks = document.getElementById('nav-links');
+      const links = navLinks.querySelectorAll('a');
+  
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 768) {
+            navLinks.classList.remove('active');
+          }
+        });
+      });
+    });
+  </script>
+  
 
 </body>
 
